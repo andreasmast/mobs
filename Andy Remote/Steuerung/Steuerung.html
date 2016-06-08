@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	  <link rel="stylesheet" href="../Basic.css">
+	  <link rel="stylesheet" href="Steuerung.css">
+		<title>Steuerung</title>
+	</head>
+	<body>
+		<header>Steuerung</header>
+
+		<div id="mySidenav" class="sidenav">
+  		<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">X</a>
+	  	<a href="../Home/Home.html">Home</a>
+			<a href="#">Steuerung</a>
+			<a href="../Messdaten/Messdaten.html">Messdaten</a>
+		</div>
+
+		<span style="cursor:pointer" onclick="openNav()"><img src="../menu_icon.png" alt="menu" style="width:50px;height:50px;"></span>
+
+		<input class="button" id="forward" type="submit" name="SubmitForward" value="Forward"/>
+		<input class="button" id="backward" type="submit" name="SubmitBackward" value="Backward"/>
+		<input class="button" id="right" type="submit" name="SubmitRight" value="Right"/>
+		<input class="button" id="left" type="submit" name="SubmitLeft" value="Left"/>
+
+		<!-- <button id="forward" class="button">Forward</button>
+		<button id="backward" class="button">Backward</button>
+		<button id="right" class="button">Right</button>
+		<button id="left" class="button">Left</button> -->
+
+		<script>
+
+		$(".button").click(function() {
+
+          $.ajax({
+        url: "Steuerung.php",
+        type: "POST",
+        data: {mode: $('input[type="submit"]:checked').val(), user: $("#user").val(), pass: $("#pass").val()},
+        dataType: "json",
+        success: function (returnData) {
+          $("#toDoTable").append(returnData.newTR);
+          $("#toDoTable").table( "refresh" );
+          $("#action").val("");
+          $("#machineId").val("");
+        }
+          });
+          return false;
+        });
+
+			function openNav() {
+			    document.getElementById("mySidenav").style.width = "250px";
+			}
+
+			function closeNav() {
+			    document.getElementById("mySidenav").style.width = "0";
+			}
+		</script>
+		<footer>Copyright Andreas Mast</footer>
+	 </body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="jquery.mobile-1.4.5.min.css">
+  <script src="jquery-2.1.4.min.js"></script>
+  <script src="jquery.mobile-1.4.5.min.js"></script>
+  <script>
+  $(document).ready(function(){
+
+    $("#newItemButton").click(function() {
+
+      $.ajax({
+	url: "Steuerung.php",
+	type: "POST",
+	data: {mode: $('input[type="radio"]:checked').val()},
+	dataType: "json",
+	success: function (returnData) {
+	  $("#toDoTable").append(returnData.newTR);
+	  $("#toDoTable").table( "refresh" );
+	  $("#action").val("");
+	  $("#machineId").val("");
+	}
+      });
+
+      return false;
+    });
+  });
+  </script>
+
+</head>
+<body>
+
+<div data-role="page" id="pageone">
+
+  <div data-role="main" class="ui-content">
+
+    <h4>Aktion</h4>
+    <fieldset data-role="controlgroup">
+      <label for="forward">forward</label>
+      <input type="radio" name="topping" id="forward" value="forward">
+      <label for="backward">backward</label>
+      <input type="radio" name="topping" id="backward" value="backward">
+      <label for="left">Left</label>
+      <input type="radio" name="topping" id="left" value="left">
+      <label for="right">Right</label>
+      <input type="radio" name="topping" id="right" value="right">
+    </fieldset>
+
+
+    <!-- <h4>Benutzerdaten</h4>
+    <label for="user" class="ui-hidden-accessible"></label>
+    <input type="text" name="user" id="user" placeholder="User name..." data-clear-btn="true">
+    <label for="pass" class="ui-hidden-accessible">Firstname</label>
+    <input type="password" name="pass" id="pass" placeholder="Password..." data-clear-btn="true">
+    -->
+    <button id="newItemButton">Submit</button>
+
+
+  </div>
+</div>
+
+</body>
+</html>

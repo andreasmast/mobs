@@ -10,6 +10,21 @@ define ('RightBackward', 23);
 define ('LeftForward', 10);
 define ('LeftBackward', 9);
 
+function gpio_exporten(){
+	shell_exec ("gpio export 9 out");
+	shell_exec ("gpio export 10 out");
+	shell_exec ("gpio export 11 out"); //Enable
+	shell_exec ("gpio export 23 out");
+	shell_exec ("gpio export 24 out");
+	shell_exec ("gpio export 25 out"); //Enable
+	return true;
+}
+
+#function set_enable_pin(){
+#	shell_exec ("gpio -g write 11 1");
+#	shell_exec ("gpio -g write 25 1");
+#}
+
 function gpio_is_exported($pin)
 // prueft, ob der Pin exportiert ist
 {
@@ -63,9 +78,7 @@ function gpio_set_value($pin, $value)
 }
 
 
-
-if (isset($_POST['user'])&&($_POST['user']=='Andi')&&isset($_POST['pass'])&&($_POST['pass']=='1234')) {
-
+if(gpio_exporten == true) {
 	$mode = $_POST['mode'];
 //	error_log("Mode: *" . $mode . "*");
 

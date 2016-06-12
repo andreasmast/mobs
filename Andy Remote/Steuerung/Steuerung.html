@@ -28,17 +28,22 @@
 		<button id="right" class="button">Right</button>
 		<button id="left" class="button">Left</button>
 
+		<p id="forward2">hey2</p>
+
 		<script>
+
+		//$("forward").click(document.getElementById('forward2').innerHTML = "forward2");
 
 		$(document).ready(function(){
 			$("forward").click(function(){
-				$.ajax ({
-					type: "POST",
-					url: "Steuerung.php",
-					data: "ButtonEingabe=forward"
-				});
+				document.getElementById('forward2').innerHTML = "forward2";
+				//$.ajax ({
+					//type: "POST",
+					//url: "Steuerung.php",
+					//data: "ButtonEingabe=forward"
+				//});
 			});
-			$("backward").click(function(){
+			/*$("backward").click(function(){
 				$.ajax ({
 					type: "POST",
 					url: "Steuerung.php",
@@ -58,7 +63,7 @@
 					url: "Steuerung.php",
 					data: "ButtonEingabe=left"
 				});
-			});
+			}); */
 
 		});
 

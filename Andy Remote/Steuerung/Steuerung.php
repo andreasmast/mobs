@@ -26,8 +26,8 @@
     echo "Both Enable on!";
   }
 
-  function write_pin($pin,$value){
-    shell_exec(gpio -g write $pin $value);
+  function write_pin($pin, $value){
+    shell_exec("gpio -g write" . $pin . $value);
   }
 
   function reset_all_motor_pins(){
@@ -46,21 +46,25 @@
 
   switch ($buttonEingabe) {
     case 'forward':
+      echo "forward";
       reset_all_motor_pins();
       write_pin(Pin_Motor1_forw, 1);
       write_pin(Pin_Motor2_forw, 1);
       break;
     case 'backward':
+      echo "backward";
       reset_all_motor_pins();
       write_pin(Pin_Motor1_backw, 1);
       write_pin(Pin_Motor2_backw, 1);
       break;
     case 'right':
+      echo "right";
       reset_all_motor_pins();
       write_pin(Pin_Motor1_forw, 1);
       write_pin(Pin_Motor2_backw, 1);
       break;
     case 'left':
+      echo "left";
       reset_all_motor_pins();
       write_pin(Pin_Motor1_backw, 1);
       write_pin(Pin_Motor2_forw, 1);

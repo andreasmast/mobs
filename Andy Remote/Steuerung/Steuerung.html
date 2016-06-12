@@ -4,6 +4,7 @@
 	  <link rel="stylesheet" href="../Basic.css">
 	  <link rel="stylesheet" href="Steuerung.css">
 		<title>Steuerung</title>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>	<!--online Reference -> Kann auch zur lokalen Reference gemacht werden-->
 	</head>
 	<body>
 		<header>Steuerung</header>
@@ -34,28 +35,28 @@
 				$.ajax ({
 					type: "POST",
 					url: "Steuerung.php",
-					data: ButtonEingabe: "1";
+					data: "ButtonEingabe=forward"
 				});
 			});
 			$("backward").click(function(){
 				$.ajax ({
 					type: "POST",
 					url: "Steuerung.php",
-					data: ButtonEingabe: "2";
+					data: "ButtonEingabe=backward"
 				});
 			});
 			$("right").click(function(){
 				$.ajax ({
 					type: "POST",
 					url: "Steuerung.php",
-					data: ButtonEingabe: "3";
+					data: "ButtonEingabe=right"
 				});
 			});
 			$("left").click(function(){
 				$.ajax ({
 					type: "POST",
 					url: "Steuerung.php",
-					data: ButtonEingabe: "4";
+					data: "ButtonEingabe=left"
 				});
 			});
 
